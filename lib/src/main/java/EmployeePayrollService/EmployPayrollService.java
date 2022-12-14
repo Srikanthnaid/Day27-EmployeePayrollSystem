@@ -5,9 +5,6 @@ import java.util.*;
 public class EmployPayrollService {
 	private List<EmployPayrollData> employPayrollDataList;
 
-	public EmployPayrollService() { // default constructor
-	}
-
 	public EmployPayrollService(ArrayList<EmployPayrollData> employPayrollDataList) { // parameterized constructor
 		this.employPayrollDataList = employPayrollDataList;
 	}
@@ -19,12 +16,13 @@ public class EmployPayrollService {
 		EmployPayrollService employPayrollService = new EmployPayrollService(employPayrollDataList);
 		employPayrollService.readEmployPayrollData(sc1);
 		employPayrollService.writeEmployPayrollData();
-		System.out.println(employPayrollDataList);
+
 	}
 
 	// create write method to print data back to console
 	private void writeEmployPayrollData() {
-		
+		// print the employee data stored in employPayrollDataList
+		System.out.println("Writing EmployPayrollData: " + employPayrollDataList);
 	}
 
 	// method to read the input from user through console
