@@ -19,6 +19,7 @@ public class EmployPayrollService {
 		EmployPayrollService employPayrollService = new EmployPayrollService(employPayrollDataList);
 		employPayrollService.readEmployPayrollData(sc1);
 		employPayrollService.writeEmployPayrollData();
+		System.out.println(employPayrollDataList);
 	}
 
 	// create write method to print data back to console
@@ -28,10 +29,10 @@ public class EmployPayrollService {
 
 	// method to read the input from user through console
 	private void readEmployPayrollData(Scanner sc1) {
-		System.out.println("Enter your name: ");
-		String name = sc1.nextLine();
 		System.out.println("Enter your Id: ");
 		int id = sc1.nextInt();
+		System.out.println("Enter your name: ");
+		String name = sc1.next();
 		System.out.println("Enter your salary: ");
 		double salary = sc1.nextDouble();
 		EmployPayrollData empData = new EmployPayrollData(id, salary, name);
