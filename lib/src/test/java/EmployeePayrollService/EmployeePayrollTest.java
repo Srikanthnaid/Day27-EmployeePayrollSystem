@@ -17,15 +17,15 @@ class EmployeePayrollTest {
 	public void givenPathWhenCheckedThenConfirm() throws IOException {
 		// Checking if files exists
 		Path homePath = Paths.get(HOME);
-		Assertions.assertTrue(Files.exists(homePath));
+		Assertions.assertTrue(Files.exists(homePath));// true
 		// Delete files and check File not Exist
 		Path playPath = Paths.get(HOME + "/" + PLAY_WITH_NIO);
 		if (Files.exists(playPath))
 			FilesUtils.deleteFiles(playPath.toFile());
-		Assertions.assertTrue(Files.notExists(playPath));
+		Assertions.assertTrue(Files.notExists(playPath));// true
 		// Create Directory
 		Files.createDirectory(playPath);
-		Assertions.assertTrue(Files.exists(playPath));
+		Assertions.assertTrue(Files.exists(playPath));// true
 		// Create Files
 		IntStream.range(1, 10).forEach(counter -> {
 			Path tempFile = Paths.get(playPath + "/temp" + counter);
@@ -43,5 +43,12 @@ class EmployeePayrollTest {
 		Files.newDirectoryStream(playPath).forEach(System.out::println);
 		Files.newDirectoryStream(playPath, path -> path.toFile().isFile() && path.toString().startsWith("temp"))
 				.forEach(System.out::println);
+	}
+
+	@Test
+	public void GivenDirectoryWhenWatched_ListsAllTheActivites() throws IOException {
+		Path dir = Paths.get(HOME + "/" + PLAY_WITH_NIO);
+		Files.list(dir).filter(Files::isRegularFile).forEach(System.out::println);
+		new WatchService(dir).processEvents();
 	}
 }
